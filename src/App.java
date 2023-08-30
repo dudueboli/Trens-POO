@@ -9,14 +9,59 @@ public class App {
             if(option == 0) break;
             switch(option){
                 case 1: 
-                        String id;
+                        int id;
                         int locNum;
 
                         System.out.println("Enter the train id: ");
-                        id = sc.nextLine();
+                        id = sc.nextInt();
 
                         System.out.println("The number of locomotives: ");
                         locNum = sc.nextInt();
+
+                        //Train t1 = new Train(id)
+                        
+                        break;
+                case 2: 
+                        while(true){
+                            int optionTwo = editingMenu();
+                            if(optionTwo == 0) break;
+                            switch(optionTwo){
+                                case 1:
+                                        System.out.println("Enter the train id: ");
+                                        id = sc.nextInt();
+
+                                        //if(...)
+                                        break;
+                                case 2:
+                                        System.out.println("Enter the train id: ");
+                                        id = sc.nextInt();
+
+                                        //if(...)
+                                        break;
+                                case 3:
+                                
+                                        break;
+                                case 4:
+
+                                        break;
+                                case 5:
+
+                                        break; 
+                                
+                            }
+                        }
+                        break;
+
+                case 3: 
+                        System.out.println("Enter the train id: ");
+                        id = sc.nextInt();
+
+                        //train.delete(id);
+                        break;
+
+                case 4:
+
+                        break;
             }
         }
 
@@ -24,13 +69,13 @@ public class App {
     public static int firstMenu(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Trains Creator");
-        System.out.println("==============");
+        System.out.println("====================");
         System.out.println("(1) Create a train");
         System.out.println("(2) Edit a train");
         System.out.println("(3) Delete a train");
-        System.out.println("(4) List of trains");
+        System.out.println("(4) List of trains in the yard");
         System.out.println("(0) Exit");
-        System.out.println("==============");
+        System.out.println("====================");
         int option = sc.nextInt();
         sc.close();
         return option;
