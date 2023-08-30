@@ -1,10 +1,11 @@
-import java.util.ArrayList;
-
 public class Train {
     private int id;
     private Locomotive locomotive;
     private Wagon wagon;
-    private 
+    private int locNum;
 
-    public Train(int id, )
+    public Train(int id){
+        this.id = id;
+    }
+    
 }

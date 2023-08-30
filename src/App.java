@@ -18,7 +18,7 @@ public class App {
                         System.out.println("The number of locomotives: ");
                         locNum = sc.nextInt();
 
-                        //Train t1 = new Train(id)
+                        //Train t1 = new Train(id, locNum)
                         
                         break;
                 case 2: 
@@ -39,13 +39,13 @@ public class App {
                                         //if(...)
                                         break;
                                 case 3:
-                                
+                                        //train.deleteLastCarriage;
                                         break;
                                 case 4:
-
+                                        //locomotivesGarage.getLocomotives();
                                         break;
                                 case 5:
-
+                                        //wagonsGarage.getWagons();
                                         break; 
                                 
                             }
@@ -60,7 +60,7 @@ public class App {
                         break;
 
                 case 4:
-
+                        //yard.getTrains();
                         break;
             }
         }
