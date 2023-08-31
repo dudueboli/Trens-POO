@@ -22,6 +22,9 @@ public class App {
                         
                         break;
                 case 2: 
+                        System.out.println("Enter the train id: ");
+                        id = sc.nextInt();
+                
                         while(true){
                             int optionTwo = editingMenu();
                             if(optionTwo == 0) break;
@@ -69,13 +72,13 @@ public class App {
     public static int firstMenu(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Trains Creator");
-        System.out.println("====================");
+        System.out.println("===============================");
         System.out.println("(1) Create a train");
         System.out.println("(2) Edit a train");
         System.out.println("(3) Delete a train");
         System.out.println("(4) List of trains in the yard");
         System.out.println("(0) Exit");
-        System.out.println("====================");
+        System.out.println("===============================");
         int option = sc.nextInt();
         sc.close();
         return option;
@@ -84,16 +87,16 @@ public class App {
     public static int editingMenu(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Editing Menu");
-        System.out.println("==============");
+        System.out.println("==========================================");
         System.out.println("(1) Insert a new locomotive");
         System.out.println("(2) Insert a new wagon");
         System.out.println("(3) Delete the last carriage of the train");
         System.out.println("(4) List of free locomotives");
         System.out.println("(5) List of free wagons");
         System.out.println("(0) Exit");
-        System.out.println("==============");
-        int option = sc.nextInt();
+        System.out.println("==========================================");
+        int optionTwo = sc.nextInt();
         sc.close();
-        return option;
+        return optionTwo;
     }
 }
