@@ -2,15 +2,15 @@ public class Locomotive extends Train {
     
     private int id;
     private int weight;
-    private final int maxWagons;
-    private int ref;
+    private int maxWagons;
+    private Train train;
     
-    public Locomotive(int id, int weight, int maxWagons, int ref) {
-        super(id, loc);
+    public Locomotive(int id, int weight, int maxWagons) {
+        super(id, null);
         this.id = id;
         this.weight = weight;
         this.maxWagons = maxWagons;
-        this.ref = ref;
+        this.train = null;
     }
     public int getId() {
         return id;
@@ -21,13 +21,18 @@ public class Locomotive extends Train {
     public int getMaxWagons() {
         return maxWagons;
     }
-    public int getRef() {
-        return ref;
+    public Train getTrain() {
+        return train;
+    }
+    public void setTrain(Train train) {
+        this.train = train;
     }
     @Override
     public String toString() {
-        return "Locomotive [id=" + id + ", weight=" + weight + ", maxWagons=" + maxWagons + ", ref=" + ref + "]";
+        return "Locomotive [id=" + id + ", weight=" + weight + ", maxWagons=" + maxWagons + ", train=" + train + "]";
     }
+    
+    
     
 
 

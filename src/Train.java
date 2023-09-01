@@ -2,9 +2,10 @@ import java.util.ArrayList;
 
 public class Train {
     private int id;
+    private int idLocomotive;
+    private int idWagon;
     private Locomotive loc;
     private Wagon wagon;
-    private int locNum;
     private ArrayList<Train> trains;
 
 
@@ -16,49 +17,52 @@ public class Train {
     public boolean engageLocomotive(Locomotive loc){
         if(trains.isEmpty() || trains.get(trains.size()-1).equals(loc)){
             trains.add(this.loc);
+            
             return true;
         }
         return false;
     }
     public boolean engageWagon(Wagon wag){
-        if(!trains.isEmpty() || !full(trains)){
-            trains.add(this.loc);
+        if(trains.isEmpty() || !full(trains)){
+            trains.add(this.wagon);
+            //remove from the garage
             return true;
         }
         return false;
     }
     public Locomotive disengageLocomotive(){
-
-        return null;
-    }
+        if(!trains.isEmpty() || trains.get(trains.size()-1).equals(loc)){
+            trains.remove(loc);
+            return loc;
+        }else{
+            return null;
+        }
+    }  
     public Wagon disengageWagon(){
-
-        return null;
+        if(!trains.isEmpty() || trains.get(trains.size()-1).equals(wagon)){
+            trains.remove(wagon);
+            return wagon;
+        }else{
+            return null;
+        }
     }
-    public int numLocomotives(){
-
+    public Locomotive getL(int idLocomotive){
+        return loc;
     }
-    public int numWagons(){
-
-    }
-    public Locomotive get(int idLocomotive){
-
-
-    }
-    public Wagon get(int idWagon){
-
+    public Wagon getW(int idWagon){
+        return wagon;
     }
     public boolean full(ArrayList<Train> trains){
-        int locOcorrences = 0;
-        int wagOcorrences = 0;
+        int locOccurrences = 0;
+        int wagOccurrences = 0;
         for(int i = 0; i < trains.size(); i++){
             if(trains.get(i).equals(loc)){
-                locOcorrences++;
+                locOccurrences++;
             }else{
-                wagOcorrences++;
+                wagOccurrences++;
             }
         }
-        if(wagOcorrences < (locOcorrences * loc.getMaxWagons()) * (1 - ((locOcorrences-1) * 0.1))){ //cada locomotive pode levar 10 vagões
+        if(wagOccurrences < (locOccurrences * loc.getMaxWagons()) * (1 - ((locOccurrences-1) * 0.1))){ //cada locomotive pode levar 10 vagões
             return false;
         }
             return true;

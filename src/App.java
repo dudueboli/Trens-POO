@@ -18,7 +18,7 @@ public class App {
                         System.out.println("The number of locomotives: ");
                         locNum = sc.nextInt();
 
-                        //Train t1 = new Train(id, locNum)
+                        Train train = new Train(id, locNum)
                         
                         break;
                 case 2: 
