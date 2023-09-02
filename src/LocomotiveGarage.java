@@ -31,5 +31,11 @@ public class LocomotiveGarage {
         }
         return null;
     }
+    public void printLocomotives() {
+        for (Locomotive loc : locGarage) {
+            System.out.println(loc);
+        }
+    }
+    
 
 }

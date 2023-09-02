@@ -1,24 +1,34 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
-        
+        ArrayList<Locomotive> loc = new ArrayList<>();
+        ArrayList<Wagon> wagon = new ArrayList<>();
+        for(int i = 0; i <= 50; i++){
+                loc.add(new Locomotive(i, 25, 10));
+                
+        }
+        for(int i = 0; i <=200; i++){
+                wagon.add(new Wagon(i, 25));
+        }
+        LocomotiveGarage garageLoc = new LocomotiveGarage(loc);
+        WagonGarage garageWag = new WagonGarage(wagon);
         while(true){
             int option = firstMenu();
             if(option == 0) break;
             switch(option){
                 case 1: 
                         int id;
-                        int locNum;
+                        Locomotive locNum;
 
-                        System.out.println("Enter the train id: ");
-                        id = sc.nextInt();
 
-                        System.out.println("The number of locomotives: ");
-                        locNum = sc.nextInt();
+                        garageLoc.printLocomotives();
+                        garageWag.printWagons();
 
-                        Train train = new Train(id, locNum)
+
+                        
                         
                         break;
                 case 2: 
@@ -79,8 +89,8 @@ public class App {
         System.out.println("(4) List of trains in the yard");
         System.out.println("(0) Exit");
         System.out.println("===============================");
+        System.out.println("Type the option:");
         int option = sc.nextInt();
-        sc.close();
         return option;
     }
 
@@ -95,8 +105,8 @@ public class App {
         System.out.println("(5) List of free wagons");
         System.out.println("(0) Exit");
         System.out.println("==========================================");
+        System.out.println("Type the option:");
         int optionTwo = sc.nextInt();
-        sc.close();
         return optionTwo;
     }
 }

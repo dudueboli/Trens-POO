@@ -4,7 +4,7 @@ public class Wagon extends Train {
     private int weight;
     private Train train;
     
-    public Wagon(int id, int weight, Train train) {
+    public Wagon(int id, int weight) {
         super(id, null);
         this.id = id;
         this.weight = weight;

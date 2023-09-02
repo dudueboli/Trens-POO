@@ -29,7 +29,7 @@ public class Locomotive extends Train {
     }
     @Override
     public String toString() {
-        return "Locomotive [id=" + id + ", weight=" + weight + ", maxWagons=" + maxWagons + ", train=" + train + "]";
+        return "Locomotive id = " + id;
     }
     
     
