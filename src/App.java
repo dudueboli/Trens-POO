@@ -6,30 +6,40 @@ public class App {
         Scanner sc = new Scanner(System.in);
         ArrayList<Locomotive> loc = new ArrayList<>();
         ArrayList<Wagon> wagon = new ArrayList<>();
+        ArrayList<Train> trains = new ArrayList<>();
         for(int i = 0; i <= 50; i++){
-                loc.add(new Locomotive(i, 25, 10));
-                
+                loc.add(new Locomotive(i, 25, 10));   
         }
         for(int i = 0; i <=200; i++){
                 wagon.add(new Wagon(i, 25));
         }
         LocomotiveGarage garageLoc = new LocomotiveGarage(loc);
         WagonGarage garageWag = new WagonGarage(wagon);
+        Yard yard = new Yard(trains);
         while(true){
             int option = firstMenu();
             if(option == 0) break;
             switch(option){
                 case 1: 
                         int id;
+                        int idLocomotive;
                         Locomotive locNum;
 
+                        System.out.println("Enter the train id: ");
+                        id = sc.nextInt();
 
                         garageLoc.printLocomotives();
-                        garageWag.printWagons();
 
+                        System.out.println("Enter the train locomotive id: ");
+                        idLocomotive = sc.nextInt();
 
-                        
-                        
+                        locNum = garageLoc.get(idLocomotive);
+                        if(locNum != null){
+                            Train train = new Train(id, locNum);
+                            trains.add(train);
+                            System.out.println("Train created!");
+                        }
+                                         
                         break;
                 case 2: 
                         System.out.println("Enter the train id: ");
@@ -73,7 +83,7 @@ public class App {
                         break;
 
                 case 4:
-                        //yard.getTrains();
+                        yard.printTrains();
                         break;
             }
         }

@@ -14,6 +14,11 @@ public class Train {
         this.loc = loc;
         trains = new ArrayList<Train>();
     }
+    
+    public int getId() {
+        return id;
+    }
+
     public boolean engageLocomotive(Locomotive loc){
         if(trains.isEmpty() || trains.get(trains.size()-1).equals(loc)){
             trains.add(this.loc);
@@ -66,6 +71,11 @@ public class Train {
             return false;
         }
             return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Train [id=" + id + ", trains=" + trains + "]";
     }
     
 }
