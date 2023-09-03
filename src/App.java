@@ -46,6 +46,7 @@ public class App {
 
                     break;
                 case 2:
+                    yard.printTrains();
                     System.out.println("Enter the train id you want to edit: ");
                     id = sc.nextInt();
 
@@ -156,6 +157,7 @@ public class App {
                     break;
 
                 case 3:
+                    yard.printTrains();
                     System.out.println("Enter the train id you want to delete: ");
                     id = sc.nextInt();
 

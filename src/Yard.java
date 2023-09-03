@@ -30,13 +30,12 @@ public class Yard {
         for (ArrayList<Train> trainList : yard) {
             for (Train train : trainList) {
                 System.out.print("Train id = " + train.getId() + " | ");
-                System.out.print("Locomotives: ");
                 for (Locomotive loc : train.getLocomotives()) {
                     System.out.print("[Locomotive id = " + loc.getId() + "] ");
                 }
-                System.out.print("| Wagons: ");
+                System.out.print("|");
                 for (Wagon wagon : train.getWagons()) {
-                    System.out.print("Wagon id = " + wagon.getId() + " ");
+                    System.out.print("[Wagon id = " + wagon.getId() + "] ");
                 }
                 System.out.println(); 
             }
