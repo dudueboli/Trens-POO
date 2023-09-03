@@ -3,8 +3,6 @@ import java.util.ArrayList;
 public class Train {
     private int id;
     private Locomotive loc;
-    private Wagon wagon;
-    private ArrayList<Train> trains;
     private ArrayList<Locomotive> locomotives; 
     private ArrayList<Wagon> wagons; 
 
@@ -12,8 +10,7 @@ public class Train {
         this.id = id;
         this.loc = loc;
         this.locomotives = new ArrayList<>(); 
-        this.wagons = new ArrayList<>();       
-        this.trains = new ArrayList<>();        
+        this.wagons = new ArrayList<>();         
     }
     
     
@@ -37,20 +34,22 @@ public class Train {
         return true;
     }
     
-    public Locomotive disengageLocomotive(){
-        if(!trains.isEmpty() || trains.get(trains.size()-1).equals(loc)){
-            trains.remove(loc);
-            return loc;
-        }else{
-            return null;
+    public Locomotive disengageLocomotive() {
+        if (!locomotives.isEmpty()) {
+            Locomotive removedLocomotive = locomotives.remove(locomotives.size() - 1);
+            removedLocomotive.setTrain(null);
+            return removedLocomotive;
+        } else {
+            return null; 
         }
-    }  
-    public Wagon disengageWagon(){
-        if(!trains.isEmpty() || trains.get(trains.size()-1).equals(wagon)){
-            trains.remove(wagon);
-            return wagon;
-        }else{
-            return null;
+    }
+    public Wagon disengageWagon() {
+        if (!wagons.isEmpty()) {
+            Wagon removedWagon = wagons.remove(wagons.size() - 1);
+            removedWagon.setTrain(null);
+            return removedWagon;
+        } else {
+            return null; 
         }
     }
     public ArrayList<Locomotive> getLocomotives() {

@@ -10,7 +10,7 @@ public class WagonGarage {
         wagonGarage = new ArrayList<>(wagons);
     }
     public void park(Wagon wagon){
-        wagonGarage.add(wagon.disengageWagon());
+        wagonGarage.add(wagon);
     }
     public Wagon remove(int id){
         for (int i = 0; i < wagonGarage.size(); i++) {

@@ -8,7 +8,7 @@ public class LocomotiveGarage {
         locGarage = new ArrayList<>(loc);
     }
     public void park(Locomotive loc){
-        locGarage.add(loc.disengageLocomotive());
+        locGarage.add(loc);
     }
     public Locomotive remove(int id){
         for(int i = 0; i<locGarage.size(); i++){
