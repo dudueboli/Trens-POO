@@ -2,17 +2,16 @@ import java.util.ArrayList;
 
 public class Train {
     private int id;
-    private int idLocomotive;
-    private int idWagon;
     private Locomotive loc;
     private Wagon wagon;
     private ArrayList<Train> trains;
+    
 
 
     public Train(int id, Locomotive loc){
         this.id = id;
         this.loc = loc;
-        trains = new ArrayList<Train>();
+        trains = new ArrayList<>();
     }
     
     public int getId() {
@@ -22,7 +21,6 @@ public class Train {
     public boolean engageLocomotive(Locomotive loc){
         if(trains.isEmpty() || trains.get(trains.size()-1).equals(loc)){
             trains.add(this.loc);
-            
             return true;
         }
         return false;
@@ -30,7 +28,6 @@ public class Train {
     public boolean engageWagon(Wagon wag){
         if(trains.isEmpty() || !full(trains)){
             trains.add(this.wagon);
-            //remove from the garage
             return true;
         }
         return false;
@@ -75,7 +72,7 @@ public class Train {
 
     @Override
     public String toString() {
-        return "Train [id=" + id + ", trains=" + trains + "]";
+        return "Train id = " + id + " | " + trains;
     }
     
 }

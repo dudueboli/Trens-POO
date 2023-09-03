@@ -6,7 +6,7 @@ public class App {
         Scanner sc = new Scanner(System.in);
         ArrayList<Locomotive> loc = new ArrayList<>();
         ArrayList<Wagon> wagon = new ArrayList<>();
-        ArrayList<Train> trains = new ArrayList<>();
+        ArrayList<ArrayList<Train>> trainYard = new ArrayList<>();
         for(int i = 0; i <= 50; i++){
                 loc.add(new Locomotive(i, 25, 10));   
         }
@@ -15,7 +15,7 @@ public class App {
         }
         LocomotiveGarage garageLoc = new LocomotiveGarage(loc);
         WagonGarage garageWag = new WagonGarage(wagon);
-        Yard yard = new Yard(trains);
+        Yard yard = new Yard(trainYard);
         while(true){
             int option = firstMenu();
             if(option == 0) break;
@@ -36,13 +36,17 @@ public class App {
                         locNum = garageLoc.get(idLocomotive);
                         if(locNum != null){
                             Train train = new Train(id, locNum);
-                            trains.add(train);
+                            ArrayList<Train> newTrainList = new ArrayList<>();
+                            newTrainList.add(train);
+                            train.engageLocomotive(locNum.getL(idLocomotive));
+                            yard.park(newTrainList);
+                            garageLoc.remove(idLocomotive);
                             System.out.println("Train created!");
                         }
                                          
                         break;
                 case 2: 
-                        System.out.println("Enter the train id: ");
+                        System.out.println("Enter the train id you want do edit: ");
                         id = sc.nextInt();
                 
                         while(true){
@@ -50,25 +54,49 @@ public class App {
                             if(optionTwo == 0) break;
                             switch(optionTwo){
                                 case 1:
-                                        System.out.println("Enter the train id: ");
-                                        id = sc.nextInt();
-
-                                        //if(...)
-                                        break;
+                                ArrayList<Train> editTrainList = null;
+                                for (ArrayList<Train> trainList : yard.getYard()) {
+                                    for (Train train : trainList) {
+                                        if (train.getId() == id) {
+                                            editTrainList = trainList;
+                                            break;
+                                        }
+                                    }
+                                    if (editTrainList != null) {
+                                        break; 
+                                    }
+                                }
+                                if (editTrainList != null) {
+                                    System.out.println("Enter the locomotive id you want to add: ");
+                                    int editLocomotiveId = sc.nextInt();
+                                    Locomotive editLocomotive = garageLoc.get(editLocomotiveId);
+                                    if (editLocomotive != null) {
+                                        editTrainList.get(0).engageLocomotive(editLocomotive);
+                                        garageLoc.remove(editLocomotiveId);
+                                        System.out.println("Locomotive added to the train successfully!");
+                                    } else {
+                                        System.out.println("Locomotive not found in the locomotive garage.");
+                                    }
+                                } else {
+                                    System.out.println("Train not found in the yard.");
+                                }
+                                break;
+                            
                                 case 2:
-                                        System.out.println("Enter the train id: ");
-                                        id = sc.nextInt();
+                                        garageWag.printWagons();
+                                        System.out.println("Enter the train wagon id: ");
+                                        int idW = sc.nextInt();
 
                                         //if(...)
                                         break;
                                 case 3:
-                                        //train.deleteLastCarriage;
+                
                                         break;
                                 case 4:
-                                        //locomotivesGarage.getLocomotives();
+                                        garageLoc.printLocomotives();
                                         break;
                                 case 5:
-                                        //wagonsGarage.getWagons();
+                                        garageWag.printWagons();
                                         break; 
                                 
                             }

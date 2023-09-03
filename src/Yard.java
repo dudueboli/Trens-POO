@@ -2,38 +2,38 @@ import java.util.ArrayList;
 
 public class Yard {
 
-    private ArrayList<Train> yard;
+    private ArrayList<ArrayList<Train>> yard;
     
-    public Yard (ArrayList<Train> yard){
+    public Yard (ArrayList<ArrayList<Train>> yard){
         this.yard = new ArrayList<>(yard);
     }
-    public void park (Train train){
-        yard.add(train);
+    public void park (ArrayList<Train> trains){
+        ArrayList<Train> trainList = new ArrayList<>(trains);
+        yard.add(trainList);
     }
-    public Train remove(int id){
-        for(int i = 0; i<yard.size(); i++){
-            Train train = yard.get(i);
-            if(train.getId() == id){
-                yard.remove(i);
-                return train;
-            }
+    public ArrayList<Train> remove(int index) {
+        if (index >= 0 && index < yard.size()) {
+            return yard.remove(index);
         }
         return null;
     }
-    public int numberOfTrain(){
+    public int numberOfTrainLists() {
         return yard.size();
     }
-    public Train get(int id){
-        for(Train train : yard){
-            if(train.getId() == id){
-                return train;
-            }
+    public ArrayList<Train> get(int index) {
+        if (index >= 0 && index < yard.size()) {
+            return yard.get(index);
         }
         return null;
     }
-    public void printTrains(){
-        for(Train train : yard){
-            System.out.println(train);
+    public void printTrains() {
+        for (ArrayList<Train> trainList : yard) {
+            for (Train train : trainList) {
+                System.out.println(train);
+            }
         }
+    }
+    public ArrayList<ArrayList<Train>> getYard() {
+        return yard;
     }
 }
