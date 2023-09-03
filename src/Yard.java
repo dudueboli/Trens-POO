@@ -29,7 +29,16 @@ public class Yard {
     public void printTrains() {
         for (ArrayList<Train> trainList : yard) {
             for (Train train : trainList) {
-                System.out.println(train);
+                System.out.print("Train id = " + train.getId() + " | ");
+                System.out.print("Locomotives: ");
+                for (Locomotive loc : train.getLocomotives()) {
+                    System.out.print("[Locomotive id = " + loc.getId() + "] ");
+                }
+                System.out.print("| Wagons: ");
+                for (Wagon wagon : train.getWagons()) {
+                    System.out.print("Wagon id = " + wagon.getId() + " ");
+                }
+                System.out.println(); 
             }
         }
     }

@@ -24,7 +24,7 @@ public class Wagon extends Train {
     }
     @Override
     public String toString() {
-        return "Wagon [id=" + id + ", weight=" + weight + ", train=" + train + "]";
+        return "Wagon id = " + id;
     }
     
 }

@@ -5,29 +5,39 @@ public class Train {
     private Locomotive loc;
     private Wagon wagon;
     private ArrayList<Train> trains;
-    
-
+    private ArrayList<Locomotive> locomotives; 
+    private ArrayList<Wagon> wagons; 
 
     public Train(int id, Locomotive loc){
         this.id = id;
         this.loc = loc;
-        trains = new ArrayList<>();
+        this.locomotives = new ArrayList<>(); 
+        this.wagons = new ArrayList<>();       
+        this.trains = new ArrayList<>();        
     }
+    
     
     public int getId() {
         return id;
     }
 
     public boolean engageLocomotive(Locomotive loc){
-        if(trains.isEmpty() || trains.get(trains.size()-1).equals(loc)){
-            trains.add(this.loc);
+        if (this.locomotives.isEmpty() || this.locomotives.get(this.locomotives.size() - 1).equals(loc)) {
+            this.locomotives.add(loc);
+            loc.setTrain(this);
+            return true;
+        } else if (this.wagons.isEmpty() && this.locomotives.size() == 1) {
+            this.locomotives.add(loc);
+            loc.setTrain(this);
             return true;
         }
         return false;
     }
+
     public boolean engageWagon(Wagon wag){
-        if(trains.isEmpty() || !full(trains)){
-            trains.add(this.wagon);
+        if (!this.trains.isEmpty() && !full(this.trains)) {
+            this.wagons.add(wag);
+            wag.setTrain(this);
             return true;
         }
         return false;
@@ -48,11 +58,11 @@ public class Train {
             return null;
         }
     }
-    public Locomotive getL(int idLocomotive){
-        return loc;
+    public ArrayList<Locomotive> getLocomotives() {
+        return locomotives;
     }
-    public Wagon getW(int idWagon){
-        return wagon;
+    public ArrayList<Wagon> getWagons() {
+        return wagons;
     }
     public boolean full(ArrayList<Train> trains){
         int locOccurrences = 0;
@@ -72,7 +82,13 @@ public class Train {
 
     @Override
     public String toString() {
-        return "Train id = " + id + " | " + trains;
-    }
-    
+        StringBuilder result = new StringBuilder("Train id = " + id + " | ");
+        for (Locomotive loc : locomotives) {
+            result.append("[Locomotive id = ").append(loc.getId()).append("] | ");
+        }
+        for (Wagon wag : wagons) {
+            result.append("[Wagon id = ").append(wag.getId()).append("] | ");
+        }
+        return result.toString().trim();
+    }  
 }
