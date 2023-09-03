@@ -29,9 +29,28 @@ public class Train {
         }
     }
     public boolean engageWagon(Wagon wag) {
-        this.wagons.add(wag);
-        wag.setTrain(this);
-        return true;
+        // Verifica se já há locomotivas engatadas no trem
+        if (locomotives.isEmpty()) {
+            System.out.println("Cannot add wagon before a locomotive.");
+            return false;
+        } else {
+            // Calcula a capacidade máxima com base no número de locomotivas engatadas
+            int maxCapacity = loc.getMaxWagons();
+            for (int i = 1; i < locomotives.size(); i++) {
+                maxCapacity = (int) (maxCapacity * 0.9); // Reduz em 10% a cada nova locomotiva
+            }
+            
+            // Verifica se a capacidade máxima já foi atingida usando o método full
+            if (full(wag)) {
+                System.out.println("Cannot add more wagons. Maximum capacity reached.");
+                return false;
+            } else {
+                // Adiciona o vagão ao trem
+                this.wagons.add(wag);
+                wag.setTrain(this);
+                return true;
+            }
+        }
     }
     
     public Locomotive disengageLocomotive() {
@@ -58,20 +77,17 @@ public class Train {
     public ArrayList<Wagon> getWagons() {
         return wagons;
     }
-    public boolean full(ArrayList<Train> trains){
-        int locOccurrences = 0;
-        int wagOccurrences = 0;
-        for(int i = 0; i < trains.size(); i++){
-            if(trains.get(i).equals(loc)){
-                locOccurrences++;
-            }else{
-                wagOccurrences++;
-            }
+    public boolean full(Wagon wag) {
+        int locOccurrences = locomotives.size();
+        int wagOccurrences = wagons.size();
+        int maxCapacity = loc.getMaxWagons();
+        
+        // Calcula a capacidade máxima com base no número de locomotivas engatadas
+        for (int i = 1; i < locOccurrences; i++) {
+            maxCapacity = (int) (maxCapacity * 0.9); // Reduz em 10% a cada nova locomotiva
         }
-        if(wagOccurrences < (locOccurrences * loc.getMaxWagons()) * (1 - ((locOccurrences-1) * 0.1))){ //cada locomotive pode levar 10 vagões
-            return false;
-        }
-            return true;
+        
+        return wagOccurrences >= maxCapacity;
     }
 
     @Override

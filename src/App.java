@@ -52,7 +52,7 @@ public class App {
                 
                     ArrayList<Train> editTrainList = null;
                     boolean trainFound = false;
-                
+
                     for (ArrayList<Train> trainList : yard.getYard()) {
                         for (Train train : trainList) {
                             if (train.getId() == id) {
@@ -132,12 +132,12 @@ public class App {
                                         Wagon removedWagon = trainToModify.get(0).disengageWagon();
                                         garageWag.park(removedWagon);
                                         System.out.println("Last wagon removed from the train and returned to the wagon garage.");
-                                    } else if (!trainToModify.get(0).getLocomotives().isEmpty()) {
+                                    } else if (trainToModify.get(0).getLocomotives().size() > 1) {
                                         Locomotive removedLocomotive = trainToModify.get(0).disengageLocomotive();
                                         garageLoc.park(removedLocomotive);
                                         System.out.println("Last locomotive removed from the train and returned to the locomotive garage.");
                                     } else {
-                                        System.out.println("The train is empty.");
+                                        System.out.println("The first locomotive cannot be removed. To do that you have to delete the whole train.");
                                     }
                                 } else {
                                     System.out.println("Train not found in the yard.");
