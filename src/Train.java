@@ -21,27 +21,22 @@ public class Train {
         return id;
     }
 
-    public boolean engageLocomotive(Locomotive loc){
-        if (this.locomotives.isEmpty() || this.locomotives.get(this.locomotives.size() - 1).equals(loc)) {
+    public boolean engageLocomotive(Locomotive loc) {
+        if (this.wagons.isEmpty()) {
             this.locomotives.add(loc);
             loc.setTrain(this);
             return true;
-        } else if (this.wagons.isEmpty() && this.locomotives.size() == 1) {
-            this.locomotives.add(loc);
-            loc.setTrain(this);
-            return true;
+        } else {
+            System.out.println("Cannot add locomotive after a wagon.");
+            return false;
         }
-        return false;
     }
-
-    public boolean engageWagon(Wagon wag){
-        if (!this.trains.isEmpty() && !full(this.trains)) {
-            this.wagons.add(wag);
-            wag.setTrain(this);
-            return true;
-        }
-        return false;
+    public boolean engageWagon(Wagon wag) {
+        this.wagons.add(wag);
+        wag.setTrain(this);
+        return true;
     }
+    
     public Locomotive disengageLocomotive(){
         if(!trains.isEmpty() || trains.get(trains.size()-1).equals(loc)){
             trains.remove(loc);

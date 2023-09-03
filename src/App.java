@@ -115,6 +115,7 @@ public class App {
                                     existingTrain.engageWagon(wagonToAdd);
                                     garageWag.remove(idW);
                                     System.out.println("Wagon added to the train successfully!");
+                                    System.out.println(existingTrain.toString());
                                 } else {
                                     System.out.println("No existing train found in the yard.");
                                 }
@@ -161,7 +162,6 @@ public class App {
                     System.out.println("Enter the train id you want to delete: ");
                     id = sc.nextInt();
 
-                    // Encontrar o trem no pátio e removê-lo
                     ArrayList<Train> trainToRemove = null;
                     for (ArrayList<Train> trainList : yard.getYard()) {
                         for (Train train : trainList) {
