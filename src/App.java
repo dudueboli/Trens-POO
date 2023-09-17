@@ -15,7 +15,7 @@ public class App {
 
             switch (option) {
                 case 1:
-                    int trainId = trainYard.size(); // Automatically assigns the next available train ID
+                    int trainId = trainYard.size();
                     Train train = createTrain(trainId, railcarGarage, sc);
                     if (train != null) {
                         trainYard.add(train);
@@ -86,7 +86,7 @@ public class App {
                     System.out.println("Locomotive added to the train.");
                 } else {
                     System.out.println("Cannot add locomotive to the train.");
-                    railcarGarage.park(locomotive); // Return the locomotive to the garage
+                    railcarGarage.park(locomotive); 
                 }
             } else {
                 System.out.println("Invalid locomotive ID. Please try again.");
@@ -118,10 +118,10 @@ public class App {
     public static void deleteTrain(ArrayList<Train> trainYard, RailcarGarage railcarGarage, Train train) {
         trainYard.remove(train);
         
-        // Access locomotives and wagons directly from Train class
+    
         ArrayList<Railcar> railcars = train.getRailcars();
     
-        // Return locomotives and wagons to the garage
+    
         for (Railcar railcar : railcars) {
             railcarGarage.park(railcar);
         }
@@ -147,7 +147,7 @@ public class App {
                             System.out.println("Locomotive added to the train.");
                         } else {
                             System.out.println("Cannot add locomotive to the train.");
-                            railcarGarage.park(locomotive); // Return the locomotive to the garage
+                            railcarGarage.park(locomotive); 
                         }
                     } else {
                         System.out.println("Invalid locomotive ID. Please try again.");
@@ -164,7 +164,7 @@ public class App {
                             System.out.println("Wagon added to the train.");
                         } else {
                             System.out.println("Cannot add wagon to the train.");
-                            railcarGarage.park(wagon); // Return the wagon to the garage
+                            railcarGarage.park(wagon); 
                         }
                     } else {
                         System.out.println("Invalid wagon ID. Please try again.");
