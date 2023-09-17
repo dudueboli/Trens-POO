@@ -7,6 +7,15 @@ public class App {
         ArrayList<Train> trainYard = new ArrayList<>();
         RailcarGarage railcarGarage = new RailcarGarage();
 
+        for(int i = 1; i <= 30; i++){
+            Locomotive locomotive = new Locomotive(i, null, 30, 10);
+            railcarGarage.park(locomotive);
+        }
+        for(int i = 31; i <= 60; i++){
+            Wagon wagon = new Wagon(i, 2);
+            railcarGarage.park(wagon);
+        }
+
         while (true) {
             int option = firstMenu();
             if (option == 0) {
